@@ -27,7 +27,7 @@ def bananaimp(packagename):
   Import a module designed specifically for Banana.
   
   The `foundation' module is imported automatically into the app
-  and cannot be imported.
+  and cannot be imported through bananaimp.
   
   ETYMOLOGY
      Originates from an abberivation:
@@ -46,5 +46,8 @@ def bananaimp(packagename):
   
   # Python does not allow us to import with the name from an
   # argument, so we do an import using importlib as our frontend.
-  globals()[packagename] = importlib.import_module("banana_module_" + packagename)
+  try:
+   globals()[packagename] = importlib.import_module("banana_module_" + packagename)
+  except:
+   raise ImportError("When banana called importlib, importlib returned an error.\n\nIf the package exists, rename the package by adding the \"banana_module_\" prefix to the name, so that Banana identifies it.")
   print(f"🍌 Import package {packagename}")
