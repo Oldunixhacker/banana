@@ -1,4 +1,4 @@
-# Banana
+# 🍌 Banana
 
 > *Even though today's apps are written in Dart, tommorow's will be written in Python.* Banana devs
 
