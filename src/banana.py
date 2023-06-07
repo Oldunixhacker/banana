@@ -22,6 +22,8 @@ if __name__ == "__main__":
   print("Hello World!")
   exit(0)
 
+print("🍌 Banana has been loaded.")
+
 def bananaimp(packagename):
   """
   Import a module designed specifically for Banana.
