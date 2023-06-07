@@ -18,10 +18,13 @@ python3 BananaInstaller.py
 ## Modules
 
 Banana uses a module system separate from that of Python itself. You can
-create new modules using the `moduledev` Banana package:
+create new modules using the main Banana package:
 
 ```python
 import banana
-banana.bananaimp("moduledev")
-banana.moduledev.define("hello_world")
+print("Hello World!")
 ```
+
+You must prefix the name of your package with `banana_module_` so that
+Banana can identify it as a Banana package. There is currently no
+API to define packages inside Banana's class.
