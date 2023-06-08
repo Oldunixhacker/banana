@@ -163,6 +163,7 @@ class pkg():
 
      if packagename == None:
       devhelp("pkg.add")
+      return
      if packagename == "":
       raise ImportError("Package name must not be empty")
      if packagename in globals():
