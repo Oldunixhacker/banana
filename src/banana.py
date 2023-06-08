@@ -133,8 +133,8 @@ class pkg():
        An exception for the pkg tools. This should not be used in your
        own packages or apps.
        """
-       def __init__(self, message):            
-           super().__init__(message)
+       def __init__(self):            
+           super().__init__()
            print("🍌 Unhandled PkgError occured. Please report this bug.")
    class PkgMissingError(Exception):
        """
@@ -162,10 +162,9 @@ class pkg():
      """
 
      if packagename == None:
-      devhelp("pkg.add")
-      return
+      raise pkg.PkgError("Package name not specified")
      if packagename == "":
-      raise ImportError("Package name must not be empty")
+      raise pkg.PkgError("Package name must not be empty")
      if packagename in globals():
       raise pkg.PkgError(f"Something with the name \"{packagename}\" is already defined, probably the same module")
      if not packagename.isidentifier():
@@ -176,7 +175,7 @@ class pkg():
       # argument, so we do an import using importlib as our frontend.
       globals()[packagename] = importlib.import_module("banana_module_" + packagename)
      except ModuleNotFoundError:
-      raise pkg.PkgMissingError("Module not found")
+      raise pkg.PkgMissingError
      except:
       raise pkg.PkgError
      print(f"\r🍌 [{concolors.GREEN}LOADED {concolors.END}] {packagename}")
