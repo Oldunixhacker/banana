@@ -9,7 +9,7 @@ Install
 
 Run the following commands:
 
-::
+.. code:: bash
 
    git clone https://github.com/TylerMS887/banana --branch "banana/stable"
    cd banana
