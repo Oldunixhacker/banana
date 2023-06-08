@@ -85,6 +85,8 @@ def devhelp(package=None):
    
 def bananaimp(packagename):
   f"""
+  NOTE: THIS FUNCTION HAS BEEN DEPRECATED. Use pkg.add instead.
+  
   Import a module designed specifically for Banana.
   
   The `foundation' module is imported automatically into the app
@@ -171,7 +173,7 @@ class pkg():
       # argument, so we do an import using importlib as our frontend.
       globals()[packagename] = importlib.import_module("banana_module_" + packagename)
      except ModuleNotFoundError:
-      raise PkgMissingError
+      raise pkg.PkgMissingError
      except:
-      raise PkgError
-     print(f"🍌 [{concolors.GREEN}LOADED {concolors.END}] {packagename}")
+      raise pkg.PkgError
+     print(f"\r🍌 [{concolors.GREEN}LOADED {concolors.END}] {packagename}")
