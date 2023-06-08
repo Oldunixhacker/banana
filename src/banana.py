@@ -19,6 +19,9 @@ ETYMOLOGY
    readiness for harvesting and eating.
 """
 
+class sdkerror(Exception):
+    pass
+
 import os
 import ctypes
 import sys
@@ -41,7 +44,10 @@ def devhelp(package=None):
    if package == None:
      help("banana")
    else:
-     help("banana." + package)
+     if package in globals():
+       help("banana." + package)
+     else:
+       raise sdkerror("Banana can only offer help for Banana functions and packages imported into this app")
    
 def bananaimp(packagename):
   """
