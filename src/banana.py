@@ -28,7 +28,7 @@ if __name__ == "__main__":
   print("🍌 This script must be imported in order to run, it has no use when run directly.")
   exit(1)
 
-def help():
+def devhelp():
    """
    Open the Python help page for Banana developers (not users of
    your Banana apps).
