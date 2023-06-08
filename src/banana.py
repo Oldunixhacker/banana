@@ -143,7 +143,7 @@ class pkg():
        def __init__(self):
            super().__init__()
            print("🍌 Module does not exist. Ensure that the script name is prefixed with \"banana_module_\" (without quotes).")
-   def add(packagename):
+   def add(packagename=None):
      """
      Import a module designed specifically for Banana.
 
@@ -161,6 +161,8 @@ class pkg():
            )
      """
 
+     if packagename == None:
+      devhelp("pkg.add")
      if packagename == "":
       raise ImportError("Package name must not be empty")
      if packagename in globals():
