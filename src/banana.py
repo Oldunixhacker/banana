@@ -27,7 +27,7 @@ class sdkerror(Exception):
     pass
 
 import os
-import ctypes
+from ctypes import *
 import sys
 import importlib
 
