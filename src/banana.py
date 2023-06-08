@@ -9,7 +9,7 @@
    
    Banana is free to use under the BSD three-clause license.
    
-   Most info printed by Banana is labeled with a banana emoji to distinguish
+   Most info printed by Banana is labeled with a banana Emoji to distinguish
    them from regular info. If you cannot see the banana, ensure your
    computer can render Emoji in the console.
 
