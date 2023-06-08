@@ -65,6 +65,12 @@ if __name__ == "__main__":
   print(f"🍌 This script must be imported in order to run, it has {concolors.BOLD}no use{concolors.END} when run directly.")
   exit(1)
 
+def currenttime():
+   """
+   The current time. Useful for command-line logs.
+   """
+   return importlib.import_module('datetime').datetime.now()
+
 def devhelp(package=None):
    f"""
    Open the Python help page for Banana developers (not users of
@@ -170,7 +176,6 @@ class pkg():
      if not packagename.isidentifier():
       raise SyntaxError("Package name is not valid. Package names can contain lowercase and uppercase letters, numbers, and underscores.")
      try:
-      print(f"\r🍌 [LOADING] {packagename}", end="")
       # Python does not allow us to import with the name from an
       # argument, so we do an import using importlib as our frontend.
       globals()[packagename] = importlib.import_module("banana_module_" + packagename)
@@ -178,4 +183,4 @@ class pkg():
       raise pkg.PkgMissingError
      except:
       raise pkg.PkgError
-     print(f"\r🍌 [{concolors.GREEN}LOADED {concolors.END}] {packagename}")
+     print(f"🍌 [{concolors.BOLD}{currenttime()}{concolors.END}] Loaded {concolors.UNDERLINE}{packagename}{concolors.END}")
