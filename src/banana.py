@@ -28,15 +28,20 @@ if __name__ == "__main__":
   print("🍌 This script must be imported in order to run, it has no use when run directly.")
   exit(1)
 
-def devhelp():
+def devhelp(package=None):
    """
    Open the Python help page for Banana developers (not users of
    your Banana apps).
    
    This function is intended for the Python REPL and has no use in a
    standard application.
+   
+   A package name can be specified.
    """
-   help("banana")
+   if package == None:
+     help("banana")
+   else:
+     help("banana." + package)
    
 def bananaimp(packagename):
   """
