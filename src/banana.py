@@ -20,6 +20,10 @@ ETYMOLOGY
 """
 
 class sdkerror(Exception):
+    """
+    Exception related to SDK errors.
+    Currently, the only use of this is in the devhelp function.
+    """
     pass
 
 import os
@@ -39,7 +43,7 @@ def devhelp(package=None):
    This function is intended for the Python REPL and has no use in a
    standard application.
    
-   A package name can be specified.
+   A package name can be specified AS A STRING.
    """
    if package == None:
      help("banana")
