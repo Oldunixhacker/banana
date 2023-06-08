@@ -141,7 +141,7 @@ class pkg():
        def __init__(self, message, errors):
            super().__init__(message)
            print("🍌 Module does not exist. Ensure that the script name is prefixed with \"banana_module_\" (without quotes).")
-   def bananaimp(packagename):
+   def add(packagename):
      """
      Import a module designed specifically for Banana.
 
