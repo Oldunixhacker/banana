@@ -133,15 +133,15 @@ class pkg():
        An exception for the pkg tools. This should not be used in your
        own packages or apps.
        """
-       def __init__(self, message, errors):            
+       def __init__(self, message):            
            super().__init__(message)
            print("🍌 Unhandled PkgError occured. Please report this bug.")
    class PkgMissingError(Exception):
        """
        Same case as PkgError.
        """
-       def __init__(self, message, errors):
-           super().__init__(message)
+       def __init__(self):
+           super().__init__()
            print("🍌 Module does not exist. Ensure that the script name is prefixed with \"banana_module_\" (without quotes).")
    def add(packagename):
      """
@@ -164,7 +164,7 @@ class pkg():
      if packagename == "":
       raise ImportError("Package name must not be empty")
      if packagename in globals():
-      raise sdkerror(f"Something with the name \"{packagename}\" is already defined, probably the same module")
+      raise pkg.PkgError(f"Something with the name \"{packagename}\" is already defined, probably the same module")
      if not packagename.isidentifier():
       raise SyntaxError("Package name is not valid. Package names can contain lowercase and uppercase letters, numbers, and underscores.")
      try:
@@ -173,7 +173,7 @@ class pkg():
       # argument, so we do an import using importlib as our frontend.
       globals()[packagename] = importlib.import_module("banana_module_" + packagename)
      except ModuleNotFoundError:
-      raise pkg.PkgMissingError
+      raise pkg.PkgMissingError("Module not found")
      except:
       raise pkg.PkgError
      print(f"\r🍌 [{concolors.GREEN}LOADED {concolors.END}] {packagename}")
