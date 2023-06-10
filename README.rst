@@ -4,6 +4,10 @@
 Banana is an SDK to write apps for any screen, inspired by Google’s
 `Flutter <https://flutter.dev>`__ for `Dart <https://dart.dev>`__.
 
+**Do not confuse Banana with the fruit (which Banana was named
+after), or other software, such as a library written by
+Wikimedia users to localise Toolforge tools.**
+
 Install
 -------
 
