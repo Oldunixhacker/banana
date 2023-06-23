@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-\033[1mWHAT IS BANANA?\033[0m
+WHAT IS BANANA?
    Banana is a free and open-source SDK to write your portable Python apps.
 
    Banana currently supports JavaScript for the web, Android for mobile, and
@@ -79,7 +79,7 @@ def devhelp(package=None):
    This function is intended for the Python REPL and has no use in a
    standard application.
    
-   A package name can be specified {concolors.BOLD}AS A STRING{concolors.END}.
+   A package name can be specified AS A STRING.
    """
    if package == None:
      help("banana")
@@ -139,16 +139,12 @@ class pkg():
        An exception for the pkg tools. This should not be used in your
        own packages or apps.
        """
-       def __init__(self):            
-           super().__init__()
-           print("🍌 Unhandled PkgError occured. Please report this bug.")
+       pass
    class PkgMissingError(Exception):
        """
        Same case as PkgError.
        """
-       def __init__(self):
-           super().__init__()
-           print("🍌 Module does not exist. Ensure that the script name is prefixed with \"banana_module_\" (without quotes).")
+       pass
    def add(packagename=None):
      """
      Import a module designed specifically for Banana.
@@ -180,7 +176,9 @@ class pkg():
       # argument, so we do an import using importlib as our frontend.
       globals()[packagename] = importlib.import_module("banana_module_" + packagename)
      except ModuleNotFoundError:
-      raise pkg.PkgMissingError
+      print(f"🍌 Installing {packagename} from PyPI...")
+      if os.system(f"pip install banana-module-{packagename}") != 0:
+         raise pkg.PkgError("Failed to install package.")
      except:
       raise pkg.PkgError
      print(f"🍌 [{concolors.BOLD}{currenttime()}{concolors.END}] Loaded {concolors.UNDERLINE}{packagename}{concolors.END}")
