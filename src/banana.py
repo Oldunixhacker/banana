@@ -19,6 +19,17 @@ WHAT IS BANANA?
    readiness for harvesting and eating.
 """
 
+import sys
+
+def display_hook(obj):
+    """
+    Custom Banana display message.
+    """
+    print("🍌 Banana is working")
+    sys.__displayhook__(obj)
+
+sys.displayhook = display_hook
+
 class concolors:
    """
    Colors for console output. Used primarily for the Banana compiler
@@ -58,7 +69,6 @@ class sdkerror(Exception):
 
 import os
 import ctypes
-import sys
 import importlib
 
 if __name__ == "__main__":
