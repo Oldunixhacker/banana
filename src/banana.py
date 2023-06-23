@@ -27,6 +27,7 @@ def display_hook(obj):
     """
     print("🍌 Banana is working")
     sys.__displayhook__(obj)
+    return None
 
 sys.displayhook = display_hook
 
