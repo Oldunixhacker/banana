@@ -13,21 +13,13 @@ WHAT IS BANANA?
    them from regular info. If you cannot see the banana, ensure your
    computer can render Emoji in the console.
 
-\033[1mETYMOLOGY\033[0m
+ETYMOLOGY
    Banana is named after a long curved fruit which grows in `clusters' and
    has soft pulpy flesh and yellow skin when developed to the point of
    readiness for harvesting and eating.
 """
 
 import sys
-
-def display_hook(obj):
-    """
-    Custom Banana display message.
-    """
-    print("🍌 Banana is working")
-    sys.__displayhook__(obj)
-    return None
 
 sys.displayhook = display_hook
 
@@ -61,6 +53,13 @@ class colors:
    RED = '\033[91m'
    END = '\033[0m'
 
+def BananaExceptionHandler(message):
+   """
+   Prints a message and exit if not an interactive terminal.
+   """
+   print(f"{colors.RED}{concolors.BOLD}[ERROR]{colors.end}{colors.RED} {message}")
+   if not hasattr(sys, 'ps1'):
+      exit(1)
 class sdkerror(Exception):
     """
     Exception related to SDK errors.
@@ -83,7 +82,7 @@ def currenttime():
    return importlib.import_module('datetime').datetime.now()
 
 def devhelp(package=None):
-   f"""
+   """
    Open the Python help page for Banana developers (not users of
    your Banana apps).
    
@@ -101,23 +100,10 @@ def devhelp(package=None):
        raise sdkerror("Banana can only offer help for Banana functions and packages imported into this app")
    
 def bananaimp(packagename):
-  f"""
+  """
   NOTE: THIS FUNCTION HAS BEEN DEPRECATED. Use pkg.add instead.
   
   Import a module designed specifically for Banana.
-  
-  The `foundation' module is imported automatically into the app
-  and cannot be imported through bananaimp.
-  
-  {concolors.BOLD}EXAMPLE{concolors.END}
-     import banana
-     banana.bananaimp('material')
-     def main():
-        banana.run(myApp)
-     class myApp():
-        return banana.material.MaterialApp(
-           useMd3=true
-        )
   """
   
   print(f"🍌 {concolors.YELLOW}{concolors.BOLD}WARNING:{concolors.END}{concolors.YELLOW} bananaimp is deprecated and will be {concolors.RED}{concolors.BOLD}removed{concolors.END}{concolors.YELLOW} in Banana 1.0. Use pkg.add instead{concolors.END}")
@@ -187,9 +173,12 @@ class pkg():
       # argument, so we do an import using importlib as our frontend.
       globals()[packagename] = importlib.import_module("banana_module_" + packagename)
      except ModuleNotFoundError:
-      print(f"🍌 Installing {packagename} from PyPI...")
+      print(f"🍌 Installing {packagename}...")
       if os.system(f"pip install banana-module-{packagename}") != 0:
-         raise pkg.PkgError("Failed to install package.")
+         try:
+           raise pkg.PkgMissingError("Failed to install package.")
+         except as error:
+           BananaExceptionHandler(error)
      except:
       raise pkg.PkgError
      print(f"🍌 [{concolors.BOLD}{currenttime()}{concolors.END}] Loaded {concolors.UNDERLINE}{packagename}{concolors.END}")
