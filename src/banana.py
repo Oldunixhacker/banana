@@ -175,10 +175,7 @@ class pkg():
      except ModuleNotFoundError:
       print(f"🍌 Installing {packagename}...")
       if os.system(f"pip install banana-module-{packagename}") != 0:
-         try:
-           raise pkg.PkgMissingError("Failed to install package.")
-         except as error:
-           BananaExceptionHandler(error)
+         raise pkg.PkgMissingError("Failed to install package.")
      except:
       raise pkg.PkgError
      print(f"🍌 [{concolors.BOLD}{currenttime()}{concolors.END}] Loaded {concolors.UNDERLINE}{packagename}{concolors.END}")
