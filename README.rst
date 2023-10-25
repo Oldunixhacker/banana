@@ -19,6 +19,10 @@ Run the following commands:
    cd banana
    python3 BananaInstaller.py
 
+Consider adding ``--depth 1`` to the git command
+if you have a potato network. This may also help
+for Tor users, especially using a GitHub onion.
+
 Modules
 -------
 
