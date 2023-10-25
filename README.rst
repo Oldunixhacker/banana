@@ -55,6 +55,3 @@ Rules of Banana
 -  Banana is simply a toolkit for writing cross-platform apps in Python.
 -  You must capitalize the B in “Banana” if you are referring to the
    SDK.
--  Banana is not a toolkit to control and eat bananas. You might be
-   thinking of HTBMP, “Hypertext Banana Mouth Protocol” [not real], but
-   no, Banana isn’t an implementation of that.
