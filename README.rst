@@ -35,7 +35,7 @@ a Python console with Banana imported for more information.
 
 Banana modules are not imported into ``__main__``.
 They are imported in Banana. To use a module for
-Banana, e.g. use ```banana.foo.bar()``, not
+Banana, e.g. use ``banana.foo.bar()``, not
 ``foo.bar()``.
 
 Package Developers
