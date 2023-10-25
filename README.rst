@@ -33,6 +33,11 @@ For example, to import the Material UI, use
 ``banana.pkg.add("material")``. You can run ``banana.devhelp("pkg")`` in
 a Python console with Banana imported for more information.
 
+Banana modules are not imported into ``__main__``.
+They are imported in Banana. To use a module for
+Banana, e.g. use ```banana.foo.bar()``, not
+``foo.bar()``.
+
 Package Developers
 ~~~~~~~~~~~~~~~~~~
 
